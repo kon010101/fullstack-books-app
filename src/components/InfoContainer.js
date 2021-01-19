@@ -27,19 +27,19 @@ function InfoContainer({ book, setShowInfos }) {
       
          <p>
            <div className="align-title">
-               <h2 className="Book-title">{book.fields.bookInfo.title}</h2> 
+               <h2 className="Book-title">{book.bookInfo.title}</h2> 
                <button onClick={()=> setShowInfos(-1)} className="Closing-button">Close</button>
            </div>
             {  /* <h2>{book.fields.bookInfo.thumbnail}</h2>  */}
             <hr className="hr"/>
             <br/>
-            <h2 className="info"><PersonIcon/> Author: {book.fields.bookInfo.authors}</h2>
-            <h2 className="info"><ClassIcon/> Category: {book.fields.bookInfo.categories}</h2>  {/* (like science fiction, ...) - is not provided all the time*/}
-            <h2 className="info"><DateRangeIcon/> Date: {dateFormat(book.fields.bookInfo.date, "dd-mm-yyyy")}</h2> {/* date of publish */}
-            <h2 className="info"><MenuBookIcon/> Pages:{book.fields.bookInfo.pages}</h2>
-            <h2 className="info"><StarIcon/> Rating:{book.fields.rating}</h2>
+            <h2 className="info"><PersonIcon/> Author: {book.bookInfo.authors}</h2>
+            <h2 className="info"><ClassIcon/> Category: {book.bookInfo.categories}</h2>  {/* (like science fiction, ...) - is not provided all the time*/}
+            <h2 className="info"><DateRangeIcon/> Date: {dateFormat(book.bookInfo.date, "dd-mm-yyyy")}</h2> {/* date of publish */}
+            <h2 className="info"><MenuBookIcon/> Pages:{book.bookInfo.pages}</h2>
+            <h2 className="info"><StarIcon/> Rating:{book.rating}</h2>
             <br/>
-            <h2 className="info"><RateReviewIcon/> Review: <br/> {book.fields.review.content[0].content[0].value} </h2>
+            <h2 className="info"><RateReviewIcon/> Review: <br/> {book.review.content} </h2>
         </p>
       </div>
   );

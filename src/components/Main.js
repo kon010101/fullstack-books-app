@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
-import { client } from "../client";
 import "./Main.css";
 import InfoContainer from "./InfoContainer";
+import axios from 'axios'
 
 export default function Main() {
   const [contentfuls, setContentfuls] = useState([]);
@@ -10,14 +10,16 @@ export default function Main() {
 
   //get Data from Contentful
   useEffect(() => {
-    client
-      .getEntries()
-      .then((resp) => {
-        console.log(JSON.stringify(resp));
-        setContentfuls(resp.items);
-        console.log(resp.items);
-      })
-      .catch(console.error);
+       axios
+      .get(
+        `http://localhost:5000/books`
+      )
+      .then((res) => {
+        setContentfuls(res.data.data)
+        })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -37,7 +39,7 @@ export default function Main() {
                   <li className="book">
                     <img
                       onClick={() => setShowInfos(idx)}
-                      src={book.fields.bookInfo.thumbnail}
+                      src={book.bookInfo.thumbnail}
                     />
                   </li>
                 );
